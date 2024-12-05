@@ -1,14 +1,26 @@
 package com.example.app_bilioteca;
 
 public class Libro {
-
+    private String ISBN;
     private String titulo;
     private String autor;
-    private int ano;
-    public Libro(String titulo, String autor, int ano) {
+    private boolean favorito;
+    private String descricion;
+
+    public Libro(String ISBN, String titulo, String autor, boolean favorito, String descricion) {
+        this.ISBN = ISBN;
         this.titulo = titulo;
         this.autor = autor;
-        this.ano = ano;
+        this.favorito = favorito;
+        this.descricion = descricion;
+    }
+
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
     }
 
     public String getTitulo() {
@@ -27,11 +39,19 @@ public class Libro {
         this.autor = autor;
     }
 
-    public int getAno() {
-        return ano;
+    public boolean isFavorito() {
+        return favorito;
     }
 
-    public void setAno(int ano) {
-        this.ano = ano;
+    public void setFavorito(boolean favorito) {
+        this.favorito = favorito;
+    }
+
+    public String getDescricion() {
+        return descricion;
+    }
+
+    public void setDescricion(String descricion) {
+        this.descricion = descricion;
     }
 }

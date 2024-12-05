@@ -26,10 +26,15 @@ public class FragmentBarraBusqueda extends Fragment {
         View view = inflater.inflate(R.layout.fragment_barra_busqueda, container, false);
 
         btnSearch = view.findViewById(R.id.buttonBuscar);
-
+        btnAdd = view.findViewById(R.id.buttonCrear);
         btnSearch.setOnClickListener(v -> {
            if (listener != null){
                listener.menuOptionSelected(1);
+            }
+        });
+        btnAdd.setOnClickListener(v -> {
+            if (listener != null){
+                listener.menuOptionSelected(2);
             }
         });
 

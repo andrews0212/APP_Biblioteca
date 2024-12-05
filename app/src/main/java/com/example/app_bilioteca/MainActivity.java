@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.app_bilioteca.fragment.FragmentBarraBusqueda;
+import com.example.app_bilioteca.fragment.FragmentBusquedaLibro;
 import com.example.app_bilioteca.fragment.onMenuOptionSelectedListener;
 
 import java.util.ArrayList;
@@ -21,7 +22,9 @@ public class MainActivity extends AppCompatActivity implements onMenuOptionSelec
 
     RecyclerView recyclerView;
     ArrayList<Libro> libros;
+    FragmentBusquedaLibro fragmentBusquedaLibro;
     FragmentBarraBusqueda fragmentBarraBusqueda;
+    FragmentManager fragmentManager;
 
     @SuppressLint("ResourceType")
     @Override
@@ -34,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements onMenuOptionSelec
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
 //        recyclerView = findViewById(R.id.recyclerView);
 //
 //        libros = new ArrayList<>();
@@ -61,8 +63,10 @@ public class MainActivity extends AppCompatActivity implements onMenuOptionSelec
 //        CustomAdapter customAdapter = new CustomAdapter(libros);
 //
 //        recyclerView.setAdapter(customAdapter);
+
+        fragmentBusquedaLibro = new FragmentBusquedaLibro();
         fragmentBarraBusqueda = new FragmentBarraBusqueda();
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().add(R.id.LinearLayout, fragmentBarraBusqueda).commit();
 
     }
@@ -70,7 +74,15 @@ public class MainActivity extends AppCompatActivity implements onMenuOptionSelec
     @Override
     public void menuOptionSelected(int position) {
         if (position == 1) {
-            Toast.makeText(MainActivity.this, "Seleccione un libro", Toast.LENGTH_SHORT).show();
+
+            if (fragmentManager.findFragmentByTag("BusquedaLibro") == null) {
+                fragmentManager.beginTransaction()
+                        .add(R.id.LinearLayout, fragmentBusquedaLibro, "BusquedaLibro")
+                        .commit();
+            }
+        } else if (position == 2) {
+
         }
     }
+
 }

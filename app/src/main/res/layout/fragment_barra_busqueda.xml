@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
     tools:context=".fragment.FragmentBarraBusqueda">
 
     <LinearLayout
@@ -15,36 +15,36 @@
             android:id="@+id/buttonCrear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            app:cornerRadius="0dp"
             android:layout_weight="1"
-            android:text="Crear" />
+            android:backgroundTint="@color/black"
+            android:text="Crear"
+            app:cornerRadius="0dp" />
 
         <Button
             android:id="@+id/buttonEliminar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            app:cornerRadius="0dp"
             android:layout_weight="1"
-            android:text="Eliminar" />
+            android:backgroundTint="@color/black"
+            android:text="Eliminar"
+            app:cornerRadius="0dp" />
 
         <Button
             android:id="@+id/buttonModificar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            app:cornerRadius="0dp"
             android:layout_weight="1"
-            android:text="Modificar" />
+            android:backgroundTint="@color/black"
+            android:text="Modificar"
+            app:cornerRadius="0dp" />
 
         <Button
             android:id="@+id/buttonBuscar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
-            app:cornerRadius="0dp"
             android:layout_weight="1"
-            android:text="Buscar" />
+            android:backgroundTint="@color/black"
+            android:text="Buscar"
+            app:cornerRadius="0dp" />
     </LinearLayout>
 </FrameLayout>

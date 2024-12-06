@@ -13,6 +13,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.app_bilioteca.fragment.FragmentBarraBusqueda;
+import com.example.app_bilioteca.fragment.FragmentBusquedaLibro;
+import com.example.app_bilioteca.fragment.RegistroLibroFragment;
 import com.example.app_bilioteca.fragment.onMenuOptionSelectedListener;
 
 import java.util.ArrayList;
@@ -22,6 +24,9 @@ public class MainActivity extends AppCompatActivity implements onMenuOptionSelec
     RecyclerView recyclerView;
     ArrayList<Libro> libros;
     FragmentBarraBusqueda fragmentBarraBusqueda;
+    FragmentManager fragmentManager;
+    FragmentBusquedaLibro fragmentBusquedaLibro;
+    RegistroLibroFragment registroLibroFragment;
 
     @SuppressLint("ResourceType")
     @Override
@@ -35,32 +40,9 @@ public class MainActivity extends AppCompatActivity implements onMenuOptionSelec
             return insets;
         });
 
-//        recyclerView = findViewById(R.id.recyclerView);
-//
-//        libros = new ArrayList<>();
-//
-//        // Agregar libros a la lista
-//        libros.add(new Libro("Cien años de soledad", "Gabriel García Márquez", 1967));
-//        libros.add(new Libro("Don Quijote de la Mancha", "Miguel de Cervantes", 1605));
-//        libros.add(new Libro("Orgullo y prejuicio", "Jane Austen", 1813));
-//        libros.add(new Libro("1984", "George Orwell", 1949));
-//        libros.add(new Libro("Matar a un ruiseñor", "Harper Lee", 1960));
-//        libros.add(new Libro("El Principito", "Antoine de Saint-Exupéry", 1943));
-//        libros.add(new Libro("Crimen y castigo", "Fiódor Dostoyevski", 1866));
-//        libros.add(new Libro("La metamorfosis", "Franz Kafka", 1915));
-//        libros.add(new Libro("El Señor de los Anillos", "J.R.R. Tolkien", 1954));
-//        libros.add(new Libro("La Divina Comedia", "Dante Alighieri", 1320));
-//        libros.add(new Libro("Las aventuras de Sherlock Holmes", "Arthur Conan Doyle", 1892));
-//        libros.add(new Libro("Ulises", "James Joyce", 1922));
-//        libros.add(new Libro("En el camino", "Jack Kerouac", 1957));
-//        libros.add(new Libro("Cumbres borrascosas", "Emily Brontë", 1847));
-//        libros.add(new Libro("El retrato de Dorian Gray", "Oscar Wilde", 1890));
-//
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//
-//        CustomAdapter customAdapter = new CustomAdapter(libros);
-//
-//        recyclerView.setAdapter(customAdapter);
+        registroLibroFragment = new RegistroLibroFragment();
+
+        fragmentBusquedaLibro = new FragmentBusquedaLibro();
         fragmentBarraBusqueda = new FragmentBarraBusqueda();
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().add(R.id.LinearLayout, fragmentBarraBusqueda).commit();
@@ -69,8 +51,17 @@ public class MainActivity extends AppCompatActivity implements onMenuOptionSelec
 
     @Override
     public void menuOptionSelected(int position) {
+        fragmentManager = getSupportFragmentManager();
+
         if (position == 1) {
-            Toast.makeText(MainActivity.this, "Seleccione un libro", Toast.LENGTH_SHORT).show();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.LinearLayoutContainer, fragmentBusquedaLibro, "buscar")
+                    .commit();
+        } else if (position == 2) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.LinearLayoutContainer, registroLibroFragment, "RegistroLibroFragment")
+                    .commit();
         }
     }
+
 }

@@ -28,6 +28,7 @@ public class FragmentBarraBusqueda extends Fragment {
         btnSearch = view.findViewById(R.id.buttonBuscar);
         btnAdd = view.findViewById(R.id.buttonCrear);
         btnEdit =  view.findViewById(R.id.buttonModificar);
+        btnDelete = view.findViewById(R.id.buttonEliminar);
         btnSearch.setOnClickListener(v -> {
            if (listener != null){
                listener.menuOptionSelected(1);
@@ -40,6 +41,9 @@ public class FragmentBarraBusqueda extends Fragment {
         });
         btnEdit.setOnClickListener(v -> {
             listener.menuOptionSelected(3);
+        });
+        btnDelete.setOnClickListener(v -> {
+            listener.menuOptionSelected(4);
         });
 
         return view;

@@ -18,13 +18,12 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements onMenuOptionSelectedListener {
 
-    RecyclerView recyclerView;
-    ArrayList<Libro> libros;
     FragmentBarraBusqueda fragmentBarraBusqueda;
     FragmentManager fragmentManager;
     FragmentBusquedaLibro fragmentBusquedaLibro;
     RegistroLibroFragment registroLibroFragment;
     FragmentModificar fragmentModificar;
+    FragmentEliminar fragmentEliminar;
 
     @SuppressLint("ResourceType")
     @Override
@@ -42,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements onMenuOptionSelec
         fragmentModificar = new FragmentModificar();
         fragmentBusquedaLibro = new FragmentBusquedaLibro();
         fragmentBarraBusqueda = new FragmentBarraBusqueda();
+        fragmentEliminar = new FragmentEliminar();
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().add(R.id.LinearLayout, fragmentBarraBusqueda).commit();
 
@@ -63,7 +63,8 @@ public class MainActivity extends AppCompatActivity implements onMenuOptionSelec
             fragmentManager.beginTransaction()
                     .replace(R.id.LinearLayoutContainer, fragmentModificar, "modificar")
                     .commit();
-
+        } else if (position == 4) {
+            fragmentManager.beginTransaction().replace(R.id.LinearLayoutContainer, fragmentEliminar, "eliminar").commit();
         }
     }
 

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.app_bilioteca.*;
@@ -37,7 +38,8 @@ public class FragmentBusquedaLibro extends Fragment {
         btnBuscarTodo = view.findViewById(R.id.buttonBuscarTodos);
         txtBusqueda = view.findViewById(R.id.editTextTextBuscar);
         recyclerView = view.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
+        recyclerView.setLayoutManager(layoutManager);
         con = new MyDataBaseHelper(getContext(), "bd_biblioteca", null,1);
         libros = new ArrayList<>();
         customAdapter = new CustomAdapter(libros);

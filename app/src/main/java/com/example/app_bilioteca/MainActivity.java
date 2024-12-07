@@ -12,10 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.app_bilioteca.fragment.FragmentBarraBusqueda;
-import com.example.app_bilioteca.fragment.FragmentBusquedaLibro;
-import com.example.app_bilioteca.fragment.RegistroLibroFragment;
-import com.example.app_bilioteca.fragment.onMenuOptionSelectedListener;
+import com.example.app_bilioteca.fragment.*;
 
 import java.util.ArrayList;
 
@@ -27,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements onMenuOptionSelec
     FragmentManager fragmentManager;
     FragmentBusquedaLibro fragmentBusquedaLibro;
     RegistroLibroFragment registroLibroFragment;
+    FragmentModificar fragmentModificar;
 
     @SuppressLint("ResourceType")
     @Override
@@ -41,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements onMenuOptionSelec
         });
 
         registroLibroFragment = new RegistroLibroFragment();
-
+        fragmentModificar = new FragmentModificar();
         fragmentBusquedaLibro = new FragmentBusquedaLibro();
         fragmentBarraBusqueda = new FragmentBarraBusqueda();
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -61,6 +59,11 @@ public class MainActivity extends AppCompatActivity implements onMenuOptionSelec
             fragmentManager.beginTransaction()
                     .replace(R.id.LinearLayoutContainer, registroLibroFragment, "RegistroLibroFragment")
                     .commit();
+        } else if (position == 3) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.LinearLayoutContainer, fragmentModificar, "modificar")
+                    .commit();
+
         }
     }
 

@@ -38,14 +38,24 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     }
 
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
-        TextView dato;
+        TextView tituloTextView;
+        TextView isbnTextView;
+        TextView autorTextView;
+        TextView favoritoTextView;
+        TextView descripcionTextView;
+
         public ViewHolderDatos(@NonNull @NotNull View itemView) {
             super(itemView);
-            this.dato  = (TextView) itemView.findViewById(R.id.idDato);
+            this.tituloTextView = (TextView) itemView.findViewById(R.id.idTitulo);
+            this.autorTextView = (TextView) itemView.findViewById(R.id.idAutor);
+            this.isbnTextView = (TextView) itemView.findViewById(R.id.idISBN);
         }
 
         public void asignarDatos(Libro libro) {
-        dato.setText(libro.getTitulo());
+
+            tituloTextView.setText("Titulo: " + libro.getTitulo());
+            autorTextView.setText("Autor: " + libro.getAutor());
+            isbnTextView.setText("ISBN: " +libro.getISBN());
         }
     }
 }

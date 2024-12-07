@@ -25,7 +25,7 @@ public class RegistroLibroFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_registro_libro, container, false);
-        btnRegistrar = view.findViewById(R.id.buttonRegistrar);
+        btnRegistrar = view.findViewById(R.id.modificarDataButton);
         btnRegistrar.setOnClickListener(v -> {
            registrar(); 
         });
@@ -34,11 +34,12 @@ public class RegistroLibroFragment extends Fragment {
     }
 
     private void registrar() {
-        EditText editTextISBN = getView().findViewById(R.id.editTextTextISBN);
-        EditText editTextTitulo = getView().findViewById(R.id.editTextTextTitulo);
-        EditText editTextAutor = getView().findViewById(R.id.editTextTextAutor);
-        RadioButton radioButtonSi = getView().findViewById(R.id.radioButtonSi);
-        EditText editTextDescripcion = getView().findViewById(R.id.editTextTextMultiLineDescripcion);
+
+        EditText editTextISBN = getView().findViewById(R.id.editTextTextISBNMod);
+        EditText editTextTitulo = getView().findViewById(R.id.editTextTextTituloMod);
+        EditText editTextAutor = getView().findViewById(R.id.editTextTextAutorMod);
+        RadioButton radioButtonSi = getView().findViewById(R.id.radioButtonSiMod);
+        EditText editTextDescripcion = getView().findViewById(R.id.editTextTextMultiLineDescripcionMod);
 
         String isbn = editTextISBN.getText().toString();
         String titulo = editTextTitulo.getText().toString();
